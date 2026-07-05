@@ -86,52 +86,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 5. Google Analytics .env Dynamic Configuration Loader
-    fetch('/.env')
-        .then(response => {
-            if (!response.ok) throw new Error("Could not find .env file");
-            return response.text();
-        })
-        .then(text => {
-            const match = text.match(/GOOGLE_ANALYTICS_ID\s*=\s*(.*)/);
-            if (match && match[1]) {
-                const analyticsId = match[1].trim();
-                if (analyticsId && analyticsId !== "G-XXXXXXXXXX") {
-                    // Dynamically inject GA gtag.js library script
-                    const gaScript = document.createElement("script");
-                    gaScript.async = true;
-                    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${analyticsId}`;
-                    document.head.appendChild(gaScript);
-
-                    // Dynamically configure global tracking function
-                    const configScript = document.createElement("script");
-                    configScript.textContent = `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', '${analyticsId}', { 'send_page_view': true });
-                    `;
-                    document.head.appendChild(configScript);
-
-                    // Track custom download link clicks
-                    const downloadLinks = document.querySelectorAll('a[href*="GestureFlow.exe"]');
-                    downloadLinks.forEach(link => {
-                        link.addEventListener("click", () => {
-                            if (typeof gtag === "function") {
-                                gtag("event", "file_download", {
-                                    file_name: "GestureFlow.exe",
-                                    file_extension: "exe",
-                                    link_text: link.textContent.trim(),
-                                    value: 1
-                                });
-                            }
-                        });
-                    });
-                    console.log("Google Analytics initialized dynamically.");
-                }
+    // 5. Google Analytics Custom Download Click Tracker
+    const downloadLinks = document.querySelectorAll('a[href*="GestureFlow.exe"]');
+    downloadLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            if (typeof gtag === "function") {
+                gtag("event", "file_download", {
+                    file_name: "GestureFlow.exe",
+                    file_extension: "exe",
+                    link_text: link.textContent.trim(),
+                    value: 1
+                });
             }
-        })
-        .catch(err => {
-            console.warn("Analytics configuration deferred: " + err.message);
         });
+    });
 });
