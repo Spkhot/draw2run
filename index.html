@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestureFlow - Custom Offline Gesture Automations for Windows</title>
+    <!-- Google Fonts: Outfit and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tab Favicon (Sleek lightning SVG emoji) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+
+<body>
+
+    <!-- Header Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-dot"></span>
+                GestureFlow
+            </a>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#guide">How to Use</a>
+                <a href="#faq">FAQs</a>
+                <a href="https://github.com/Soham/gesture-flow" target="_blank" class="github-link">GitHub</a>
+            </nav>
+            <a href="./GestureFlow.exe" class="nav-cta-btn">Download Free</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Showcase Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="badge">Windows Automation Utility</span>
+                <h1>Control Your PC with <span class="gradient-text">Custom Gestures</span></h1>
+                <p class="hero-desc">
+                    Replace complicated shortcuts. Tap your modifier keys, draw shapes directly on your screen with your
+                    mouse or trackpad, and instantly trigger system commands—completely offline.
+                </p>
+                <div class="hero-ctas">
+                    <a href="./GestureFlow.exe" class="primary-btn">
+                        <svg class="windows-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M0 3.449L9.75 2.1v9.45H0V3.449zM0 12.45h9.75v9.45L0 20.551v-8.1zM11.25 1.875L24 0v11.55H11.25V1.875zm12.75 10.575V24l-12.75-1.875V12.45H24z" />
+                        </svg>
+                        Download Standalone (.exe)
+                    </a>
+                    <a href="#guide" class="secondary-btn">View Setup Guide</a>
+                </div>
+                <div class="hero-meta">
+                    <span>Portable App (No Install)</span>
+                    <span class="meta-dot"></span>
+                    <span>100% Offline & Private</span>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="image-glow"></div>
+                <img src="assets/gesture_flow_mockup.png"
+                    alt="GestureFlow Dashboard Mockup showing neon trails and custom templates" class="hero-mockup-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2>Built for Speed and Customization</h2>
+            <p>GestureFlow runs directly in your Windows background tray to execute actions instantly.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="card-icon cyan-theme">🔒</div>
+                <h3>100% Offline & Secure</h3>
+                <p>No account logins, no cloud APIs, and no telemetry data collections. Your gesture coordinates and
+                    automated paths are stored locally in an SQLite file.</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon purple-theme">⚡</div>
+                <h3>Double-Tap Activation</h3>
+                <p>Optimized for laptop touchpads. Simply tap the <strong>Ctrl</strong>, <strong>Shift</strong>, or
+                    <strong>Alt</strong> key twice, hold left-click to draw, and release. No awkward shortcut keys
+                    required.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon pink-theme">🎨</div>
+                <h3>Visual Training Canvas</h3>
+                <p>Train the engine by drawing your shape 3 times. Overlays previous attempts in semi-transparent layers
+                    so you draw shapes uniformly and reliably.</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-icon orange-theme">🚀</div>
+                <h3>Deep System Integrations</h3>
+                <p>Trigger actions like opening URLs, starting files/apps, adjusting system volume, monitor brightness,
+                    typing macros, or running scripts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step by Step Interactive Guide -->
+    <section id="guide" class="guide-section">
+        <div class="section-header">
+            <h2>Getting Started is Simple</h2>
+            <p>Setup a gesture language on your laptop in under 2 minutes.</p>
+        </div>
+
+        <div class="guide-tabs">
+            <div class="tab-triggers">
+                <button class="tab-trigger active" data-step="1">1. Download & Run</button>
+                <button class="tab-trigger" data-step="2">2. Register Gesture</button>
+                <button class="tab-trigger" data-step="3">3. Draw to Trigger</button>
+                <button class="tab-trigger" data-step="4">4. Startup Always</button>
+            </div>
+
+            <div class="tab-contents">
+                <!-- Step 1 -->
+                <div class="tab-content active" id="step-1">
+                    <div class="step-layout">
+                        <div class="step-text">
+                            <h3>No Installer Needed</h3>
+                            <p>Download the standalone <strong>GestureFlow.exe</strong> binary. It is a portable app
+                                containing PySide6, Python, and the gesture hook modules inside a single executable
+                                file.</p>
+                            <p class="warning-box">
+                                <strong>SmartScreen Warning:</strong> Because the binary is self-compiled and unsigned,
+                                Windows Defender may show a pop-up on first run. Click <em>"More Info"</em> and then
+                                <em>"Run anyway"</em>.
+                            </p>
+                        </div>
+                        <div class="step-visual">
+                            <div class="visual-placeholder run-visual">
+                                <span class="visual-step-num">Step 1</span>
+                                <div class="exe-box">
+                                    <div class="exe-icon">⚙️</div>
+                                    <span>GestureFlow.exe</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="tab-content" id="step-2">
+                    <div class="step-layout">
+                        <div class="step-text">
+                            <h3>Map Actions & Train Shape</h3>
+                            <p>Go to the <strong>Add Gesture</strong> tab inside the application:</p>
+                            <ul>
+                                <li>Input a unique identifier (e.g. <em>"Spotify"</em>).</li>
+                                <li>Choose an Action Type (like <em>Open App</em> or <em>Media Control</em>) and set the
+                                    path/value.</li>
+                                <li>Draw your custom shape on the training canvas <strong>3 times</strong>. Tracing over
+                                    the light cyan reference marks helps align patterns.</li>
+                            </ul>
+                        </div>
+                        <div class="step-visual">
+                            <div class="visual-placeholder train-visual">
+                                <span class="visual-step-num">Step 2</span>
+                                <div class="train-indicator">
+                                    <div class="train-progress">Traces: 3 / 3</div>
+                                    <div class="train-canvas-mock">
+                                        <svg class="trace-path-svg" viewBox="0 0 100 100">
+                                            <path d="M 20 80 L 50 20 L 80 80" fill="none" stroke="#6366f1"
+                                                stroke-width="4" stroke-dasharray="3" opacity="0.6" />
+                                            <path d="M 21 78 L 49 22 L 79 79" fill="none" stroke="#3b82f6"
+                                                stroke-width="5" stroke-linecap="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="tab-content" id="step-3">
+                    <div class="step-layout">
+                        <div class="step-text">
+                            <h3>Double-Tap and Draw</h3>
+                            <p>Minimize the application to your background system tray.</p>
+                            <ul>
+                                <li>Double-tap the <strong>Ctrl</strong> key on your keyboard, OR double-click the
+                                    <strong>Right Mouse Button</strong> (configured in Settings).
+                                </li>
+                                <li>Your screen dims, indicating that the full-desktop overlay canvas is active.</li>
+                                <li>Draw your custom shape anywhere on the screen by dragging the mouse, and release.
+                                    The action runs immediately!</li>
+                            </ul>
+                        </div>
+                        <div class="step-visual">
+                            <div class="visual-placeholder trigger-visual">
+                                <span class="visual-step-num">Step 3</span>
+                                <div class="trigger-card">
+                                    <div class="key-tap">Right Click</div>
+                                    <div class="key-plus">+</div>
+                                    <div class="key-tap">Right Click</div>
+                                    <div class="key-desc">Double Right-Click to Draw</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="tab-content" id="step-4">
+                    <div class="step-layout">
+                        <div class="step-text">
+                            <h3>Run Automatically on Boot</h3>
+                            <p>You don't need to manually configure Windows scripts to ensure it runs every time you
+                                open your laptop.</p>
+                            <ul>
+                                <li>Go to the **Settings** tab.</li>
+                                <li>Check the checkbox **"Launch GestureFlow automatically on Windows startup"**.</li>
+                                <li>Click **Save Settings**. The application automatically updates the Windows user
+                                    registry.</li>
+                            </ul>
+                        </div>
+                        <div class="step-visual">
+                            <div class="visual-placeholder startup-visual">
+                                <span class="visual-step-num">Step 4</span>
+                                <div class="checkbox-mock">
+                                    <div class="checkbox-toggled">✓</div>
+                                    <span>Launch on Windows Startup</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about the application execution.</p>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-trigger">Is this application completely free and safe?<span>+</span></button>
+                <div class="faq-answer">
+                    <p>Yes. GestureFlow is 100% free and open-source under the MIT license. It runs completely offline
+                        inside a sandboxed Python runtime. No information or analytics leave your local PC.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger">Why does Windows Defender flag the executable?<span>+</span></button>
+                <div class="faq-answer">
+                    <p>This is standard behavior for all unsigned executables packaged using PyInstaller. Because the
+                        application utilizes global hooks to detect the double-tap triggers, Windows is cautious. You
+                        can review the full open-source codebase on our GitHub repository to confirm its safety and
+                        compile the executable yourself using our build script.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger">How much memory does it use in the background?<span>+</span></button>
+                <div class="faq-answer">
+                    <p>GestureFlow is extremely lightweight, drawing less than 30MB of RAM while resting minimized
+                        inside your Windows system tray, and consuming 0% CPU when not actively drawing.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger">How do I edit or delete an existing gesture?<span>+</span></button>
+                <div class="faq-answer">
+                    <p>Double-click the GestureFlow tray icon to open the dashboard. On the table, you will see
+                        <strong>✏️ Edit</strong> and <strong>🗑️ Delete</strong> buttons next to each gesture. Click
+                        Edit to open a modal dialog to modify mapping details, or Delete to remove it completely.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-bottom">
+        <div class="cta-card">
+            <h2>Automate Your Windows Laptop Today</h2>
+            <p>Ditch key combinations. Design your own custom visual language for commands.</p>
+            <a href="./GestureFlow.exe" class="primary-btn">Download for Windows (10/11)</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                GestureFlow
+                <p>Offline desktop automation through custom-drawn gestures.</p>
+            </div>
+            <div class="footer-credits">
+                <p>Developed by <a href="https://github.com/Soham" target="_blank">Soham</a></p>
+                <p>Licensed under MIT. Code available on <a href="https://github.com/Soham/gesture-flow"
+                        target="_blank">GitHub</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
